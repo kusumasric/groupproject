@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:background="@color/colorPrimaryDark"
+    android:background="@color/darkgreen"
+    android:orientation="vertical"
     android:layout_height="match_parent"
     android:weightSum="1"
     android:baselineAligned="false">
@@ -13,37 +14,56 @@
         android:text="Sign In"
         android:gravity="center"
         android:textSize="20dp"/>
-
-    <TextView
-        android:text="Name"
+    <LinearLayout
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="77dp"
-        android:id="@+id/textView13"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginStart="32dp" />
+        android:orientation="horizontal"
+        android:layout_height="wrap_content">
 
-    <TextView
-        android:text="Password"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="58dp"
-        android:id="@+id/textView14"
-        android:layout_below="@+id/Name"
-        android:layout_alignStart="@+id/textView13" />
+         <TextView
+             android:text="Name"
+             android:layout_width="100dp"
+             android:layout_height="30dp"
+             android:layout_marginTop="77dp"
+             android:id="@+id/textView13"
+             android:layout_alignParentTop="true"
+       />
 
-    <EditText
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:inputType="textPersonName"
+            android:text=""
+            android:layout_marginTop="77dp"
+            android:background="@color/white"
+            android:ems="10"
+            android:id="@+id/Name"/>
+
+    </LinearLayout>
+
+    <LinearLayout
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:inputType="textPersonName"
-        android:text=""
-        android:ems="10"
-        android:id="@+id/password"
-        android:background="@color/white"
-        android:layout_alignBaseline="@+id/textView14"
-        android:layout_alignBottom="@+id/textView14"
-        android:layout_alignStart="@+id/Name" />
+        android:orientation="horizontal"
+        android:layout_height="wrap_content">
+        <TextView
+            android:text="Password"
+            android:layout_width="100dp"
+            android:layout_height="30dp"
+            android:id="@+id/textView14"
+            android:layout_below="@+id/Name"
+            android:padding="5dp"/>
+
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:inputType="textPersonName"
+            android:text=""
+            android:ems="10"
+            android:id="@+id/password"
+            android:background="@color/white"
+            android:layout_alignBaseline="@+id/textView14"
+            android:layout_alignBottom="@+id/textView14"
+        />
+    </LinearLayout>
 
     <Button
         android:text="Sign in"
@@ -51,21 +71,10 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="75dp"
         android:id="@+id/button"
-        android:layout_below="@+id/password"
-        android:layout_toEndOf="@+id/textView14"
-        android:layout_marginStart="27dp"
+        android:layout_gravity="center"
         android:onClick="signinvalidation"/>
 
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:inputType="textPersonName"
-        android:text=""
-        android:background="@color/white"
-        android:ems="10"
-        android:id="@+id/Name"
-        android:layout_alignBaseline="@+id/textView13"
-        android:layout_alignBottom="@+id/textView13"
-        android:layout_alignStart="@+id/button" />
 
-</RelativeLayout>
+       />
+
+</LinearLayout>
