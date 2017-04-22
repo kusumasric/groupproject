@@ -1,6 +1,8 @@
 package com.example.kusumasri.groupproject;
 
 
+import android.app.AlarmManager;
+import android.app.PendingIntent;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
@@ -39,10 +41,13 @@ public class Home extends AppCompatActivity {
         String hello = "hello" +" "+ name;
         TextView text = (TextView) findViewById(R.id.hellou);
         text.setText(hello);
-        Intent intent=new Intent(this,Locationservice.class);
+
+      /*  Intent intent=new Intent(this,Locationservice.class);
+        startService(intent);*/
+        scheduleAlarm();
         registerReceiver(uiUpdated, new IntentFilter("LOCATION_UPDATED"));
 
-        startService(intent);
+
 
     }
 
@@ -55,9 +60,27 @@ public class Home extends AppCompatActivity {
             String latitude=""+intent.getExtras().getDouble("latitude");
             tv_longitude.setText(longitude);
             tv_latitude.setText(latitude);
-
+           //g context.startService(new Intent(context, Locationservice.class));
         }
     };
+
+
+    public void scheduleAlarm() {
+
+        Intent intent = new Intent(getApplicationContext(), MyAlarmReceiver.class);
+
+        final PendingIntent pIntent = PendingIntent.getBroadcast(this, MyAlarmReceiver.REQUEST_CODE,
+                intent, PendingIntent.FLAG_UPDATE_CURRENT);
+
+        long firstMillis = System.currentTimeMillis(); // alarm is set right away
+        AlarmManager alarm = (AlarmManager) this.getSystemService(Context.ALARM_SERVICE);
+        // First parameter is the type: ELAPSED_REALTIME, ELAPSED_REALTIME_WAKEUP, RTC_WAKEUP
+        // Interval can be INTERVAL_FIFTEEN_MINUTES, INTERVAL_HALF_HOUR, INTERVAL_HOUR, INTERVAL_DAY
+        alarm.setInexactRepeating(AlarmManager.RTC_WAKEUP, firstMillis,
+                1*60*1000, pIntent);
+    }
+
+
 
     @Override
     protected void onStart() {

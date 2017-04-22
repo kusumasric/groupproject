@@ -19,6 +19,10 @@
         <activity android:name=".Home"/>
         <activity android:name=".SignIn"/>
         <service android:name=".Locationservice"/>
+        <receiver
+            android:name=".MyAlarmReceiver"
+            android:process=":remote" >
+        </receiver>
     </application>
 
     <uses-permission android:name="android.permission.WRITE_INTERNAL_STORAGE" />

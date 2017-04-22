@@ -19,6 +19,7 @@ import android.os.Bundle;
 import android.os.Looper;
 import android.support.v4.content.LocalBroadcastManager;
 import android.widget.TextView;
+import android.widget.Toast;
 
 /**
  * Created by kusumasri on 4/20/17.
@@ -90,6 +91,15 @@ public class locationasynctask extends AsyncTask<Context,Locationgps,Locationgps
     protected void onProgressUpdate(Locationgps...loca) {
 
 
+    }
+
+    @Override
+    protected void onPostExecute(Locationgps locationgps) {
+        //These 3 lines are to test continous values
+        String str="longitude"+locationgps.getLongitude()+" "+"latitude"+locationgps.getlatitude();
+        Toast toast = Toast.makeText(context,str,Toast.LENGTH_LONG);
+        toast.show();
+        super.onPostExecute(locationgps);
     }
 
     @Override
